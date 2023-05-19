@@ -121,6 +121,8 @@ class LockstepApi:
         self.webhookRules = WebhookRulesClient(self)
         self.webhooks = WebhooksClient(self)
         self.serverUrl = env
+        if env == "dev":
+            self.serverUrl = "https://api.dev.lockstep.io/"
         if env == "sbx":
             self.serverUrl = "https://api.sbx.lockstep.io/"
         if env == "prd":

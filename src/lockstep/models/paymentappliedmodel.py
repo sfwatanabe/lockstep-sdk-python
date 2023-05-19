@@ -11,10 +11,13 @@
 # @link       https://github.com/Lockstep-Network/lockstep-sdk-python
 #
 
-
+from __future__ import annotations
 from dataclasses import dataclass
-from lockstep.models.paymentmodel import PaymentModel
-from lockstep.models.invoicemodel import InvoiceModel
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from lockstep.models.paymentmodel import PaymentModel
+    from lockstep.models.invoicemodel import InvoiceModel
 
 @dataclass
 class PaymentAppliedModel:
@@ -45,4 +48,6 @@ class PaymentAppliedModel:
     sourceModifiedDate: str | None = None
     payment: PaymentModel | None = None
     invoice: InvoiceModel | None = None
+    # payment: dict | None = None
+    # invoice: dict | None = None
 

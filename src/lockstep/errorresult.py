@@ -27,3 +27,12 @@ class ErrorResult:
     instance: str | None = None
     content: str | None = None
 
+    @classmethod
+    def from_json(cls, data: dict):
+        obj = cls()
+        for key, value in data.items():
+            if hasattr(obj, key):
+                setattr(obj, key, value)
+            # else:
+            #     obj.extra_data[key] = value
+        return obj

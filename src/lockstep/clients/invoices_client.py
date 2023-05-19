@@ -223,6 +223,7 @@ class InvoicesClient:
         result = self.client.send_request("GET", path, None, {"filter": filter, "include": include, "order": order, "pageSize": pageSize, "pageNumber": pageNumber}, None)
         if result.status_code >= 200 and result.status_code < 300:
             return LockstepResponse(True, result.status_code, FetchResult[InvoiceModel](**result.json()), None)
+            # return LockstepResponse(True, result.status_code, FetchResult.from_json(result.json(), InvoiceModel), None)
         else:
             return LockstepResponse(False, result.status_code, None, ErrorResult(**result.json()))
 
